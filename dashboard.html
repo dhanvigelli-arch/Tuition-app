@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Class - Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+                <span>SmartClass</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    Dashboard
+                </a>
+                <a href="#">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    Students
+                </a>
+                <a href="#">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    Materials
+                </a>
+                <a href="#">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    Attendance
+                </a>
+            </nav>
+            <div class="user-profile">
+                <div class="avatar">T</div>
+                <div class="user-info">
+                    <h4>Teacher Account</h4>
+                    <p>Admin Access</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-title">
+                    <h1>Today's Schedule</h1>
+                    <p>Manage your batches and timings</p>
+                </div>
+                <div class="header-actions">
+                    <button class="notification-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="logout-btn" onclick="window.location.href='index.html'">
+                        Logout
+                    </button>
+                </div>
+            </header>
+
+            <div class="subjects-grid">
+                <!-- Subject Card 1 -->
+                <div class="subject-card" data-subject="math">
+                    <div class="card-header">
+                        <div class="icon-wrapper math-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                        </div>
+                        <h3>Mathematics</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="batch-name">Class 10 - Section A</p>
+                        <div class="timing-container">
+                            <svg class="clock-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            <span class="time-display">09:00 AM - 10:30 AM</span>
+                            <div class="time-edit-mode hidden">
+                                <input type="time" class="time-input start-time" value="09:00">
+                                <span>to</span>
+                                <input type="time" class="time-input end-time" value="10:30">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="edit-btn">Edit Timing</button>
+                        <button class="save-btn hidden">Save</button>
+                    </div>
+                </div>
+
+                <!-- Subject Card 2 -->
+                <div class="subject-card" data-subject="physics">
+                    <div class="card-header">
+                        <div class="icon-wrapper physics-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="M5 5l1.5 1.5"></path><path d="M17.5 17.5L19 19"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="M5 19l1.5-1.5"></path><path d="M17.5 6.5L19 5"></path></svg>
+                        </div>
+                        <h3>Physics</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="batch-name">Class 10 - Section A</p>
+                        <div class="timing-container">
+                            <svg class="clock-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            <span class="time-display">10:45 AM - 12:15 PM</span>
+                            <div class="time-edit-mode hidden">
+                                <input type="time" class="time-input start-time" value="10:45">
+                                <span>to</span>
+                                <input type="time" class="time-input end-time" value="12:15">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="join-btn" onclick="joinClass(this, 'https://meet.google.com/new')">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                            Join Class
+                        </button>
+                        <button class="edit-btn">Edit Timing</button>
+                        <button class="save-btn hidden">Save</button>
+                    </div>
+                </div>
+
+                <!-- Subject Card 3 -->
+                <div class="subject-card" data-subject="chemistry">
+                    <div class="card-header">
+                        <div class="icon-wrapper chemistry-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"></path><path d="M10 9h4"></path><path d="M12 3v18"></path><path d="M5 21h14"></path></svg>
+                        </div>
+                        <h3>Chemistry</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="batch-name">Class 10 - Section B</p>
+                        <div class="timing-container">
+                            <svg class="clock-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            <span class="time-display">01:00 PM - 02:30 PM</span>
+                            <div class="time-edit-mode hidden">
+                                <input type="time" class="time-input start-time" value="13:00">
+                                <span>to</span>
+                                <input type="time" class="time-input end-time" value="14:30">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="edit-btn">Edit Timing</button>
+                        <button class="save-btn hidden">Save</button>
+                    </div>
+                </div>
+
+                <!-- Subject Card 4 -->
+                <div class="subject-card" data-subject="biology">
+                    <div class="card-header">
+                        <div class="icon-wrapper biology-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-7l-2-2"></path><path d="M12 15l2-2"></path><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path></svg>
+                        </div>
+                        <h3>Biology</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="batch-name">Class 10 - Section B</p>
+                        <div class="timing-container">
+                            <svg class="clock-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            <span class="time-display">02:45 PM - 04:15 PM</span>
+                            <div class="time-edit-mode hidden">
+                                <input type="time" class="time-input start-time" value="14:45">
+                                <span>to</span>
+                                <input type="time" class="time-input end-time" value="16:15">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="edit-btn">Edit Timing</button>
+                        <button class="save-btn hidden">Save</button>
+                    </div>
+                </div>
+
+                <!-- Subject Card 5 -->
+                <div class="subject-card" data-subject="english">
+                    <div class="card-header">
+                        <div class="icon-wrapper english-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <h3>English Literature</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="batch-name">Class 9 - Section A</p>
+                        <div class="timing-container">
+                            <svg class="clock-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            <span class="time-display">04:30 PM - 05:30 PM</span>
+                            <div class="time-edit-mode hidden">
+                                <input type="time" class="time-input start-time" value="16:30">
+                                <span>to</span>
+                                <input type="time" class="time-input end-time" value="17:30">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="edit-btn">Edit Timing</button>
+                        <button class="save-btn hidden">Save</button>
+                    </div>
+                </div>
+
+                <!-- Subject Card 6 -->
+                <div class="subject-card" data-subject="computer">
+                    <div class="card-header">
+                        <div class="icon-wrapper computer-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </div>
+                        <h3>Computer Science</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="batch-name">Class 9 - Section B</p>
+                        <div class="timing-container">
+                            <svg class="clock-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            <span class="time-display">05:45 PM - 07:00 PM</span>
+                            <div class="time-edit-mode hidden">
+                                <input type="time" class="time-input start-time" value="17:45">
+                                <span>to</span>
+                                <input type="time" class="time-input end-time" value="19:00">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="edit-btn">Edit Timing</button>
+                        <button class="save-btn hidden">Save</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Floating Chat Widget -->
+    <div class="chat-widget">
+        <button class="chat-toggle-btn" id="chat-toggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </button>
+
+        <div class="chat-window hidden" id="chat-window">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar">T</div>
+                    <div>
+                        <h4>Ask Teacher</h4>
+                        <p>Typically replies in minutes</p>
+                    </div>
+                </div>
+                <button class="chat-close-btn" id="chat-close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will appear here -->
+                <div class="message received">
+                    <p>Hello! Let me know if you have any doubts regarding today's topics.</p>
+                    <span class="timestamp">10:00 AM</span>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Type your doubt here...">
+                <button class="send-btn" id="chat-send">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
