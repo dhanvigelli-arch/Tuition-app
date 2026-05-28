@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Class - Attendance</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="attendance.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+                <span>SmartClass</span>
+            </div>
+            <nav class="nav-links">
+                <a href="dashboard.html">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    Dashboard
+                </a>
+                <a href="#">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    Students
+                </a>
+                <a href="materials.html">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    Materials
+                </a>
+                <a href="attendance.html" class="active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    Attendance
+                </a>
+            </nav>
+            <div class="user-profile">
+                <div class="avatar">U</div>
+                <div class="user-info">
+                    <h4>User Account</h4>
+                    <p>Loading Access...</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-title">
+                    <h1 id="attendance-header-title">Attendance Tracker</h1>
+                    <p id="attendance-header-subtitle">Manage or view your class attendance</p>
+                </div>
+                <div class="header-actions">
+                    <button class="logout-btn" onclick="window.location.href='index.html'">
+                        Logout
+                    </button>
+                </div>
+            </header>
+
+            <!-- Teacher View -->
+            <div id="teacher-attendance-view" class="attendance-view hidden">
+                <div class="attendance-controls">
+                    <select class="subject-select">
+                        <option>Maths - Class 10A</option>
+                        <option>Science - Class 10A</option>
+                        <option>Social - Class 10B</option>
+                    </select>
+                    <input type="date" class="date-select" value="2023-10-25">
+                </div>
+                <div class="attendance-table-container">
+                    <table class="attendance-table">
+                        <thead>
+                            <tr>
+                                <th>Roll No</th>
+                                <th>Student Name</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>101</td>
+                                <td>Alice Smith</td>
+                                <td><span class="status-badge present">Present</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-mark present-btn active">P</button>
+                                        <button class="btn-mark absent-btn">A</button>
+                                        <button class="btn-mark late-btn">L</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>102</td>
+                                <td>Bob Jones</td>
+                                <td><span class="status-badge absent">Absent</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-mark present-btn">P</button>
+                                        <button class="btn-mark absent-btn active">A</button>
+                                        <button class="btn-mark late-btn">L</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>103</td>
+                                <td>Charlie Davis</td>
+                                <td><span class="status-badge late">Late</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-mark present-btn">P</button>
+                                        <button class="btn-mark absent-btn">A</button>
+                                        <button class="btn-mark late-btn active">L</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="submit-section">
+                    <button class="submit-attendance-btn">Save Attendance</button>
+                </div>
+            </div>
+
+            <!-- Student View -->
+            <div id="student-attendance-view" class="attendance-view hidden">
+                <div class="attendance-summary">
+                    <div class="summary-card">
+                        <div class="circle-chart" style="--percentage: 85;">
+                            <div class="circle-inner">85%</div>
+                        </div>
+                        <div class="summary-details">
+                            <h3>Overall Attendance</h3>
+                            <p>Great job! You are maintaining a solid attendance record.</p>
+                            <div class="stats-row">
+                                <div class="stat"><span class="dot present"></span> 24 Present</div>
+                                <div class="stat"><span class="dot absent"></span> 3 Absent</div>
+                                <div class="stat"><span class="dot late"></span> 1 Late</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="history-title">Recent Classes</h3>
+                <div class="history-list">
+                    <div class="history-item">
+                        <div class="history-info">
+                            <h4>Maths</h4>
+                            <span>Oct 25, 2023 - 09:00 AM</span>
+                        </div>
+                        <div class="history-status present">Present</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-info">
+                            <h4>Science</h4>
+                            <span>Oct 24, 2023 - 10:45 AM</span>
+                        </div>
+                        <div class="history-status absent">Absent</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-info">
+                            <h4>Social</h4>
+                            <span>Oct 23, 2023 - 01:00 PM</span>
+                        </div>
+                        <div class="history-status present">Present</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="attendance.js"></script>
+</body>
+</html>

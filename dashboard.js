@@ -176,3 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if(dashboardLink) dashboardLink.href = 'dashboard.html?role=' + role;
     if(materialsLink) materialsLink.href = 'materials.html?role=' + role;
+    const attendanceLink = document.querySelector('.nav-links a:nth-child(4)');
+    if(attendanceLink) attendanceLink.href = 'attendance.html?role=' + role;
+

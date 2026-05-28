@@ -1,0 +1,222 @@
+/* Attendance Specific Styles */
+.attendance-view {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.attendance-view:not(.hidden) {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Teacher View Styles */
+.attendance-controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.subject-select, .date-select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+.subject-select option {
+    background: var(--bg-dark);
+    color: white;
+}
+
+.attendance-table-container {
+    background: var(--card-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.attendance-table th, .attendance-table td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.attendance-table th {
+    background: rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status-badge.present, .history-status.present { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+.status-badge.absent, .history-status.absent { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+.status-badge.late, .history-status.late { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border-glass);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-mark:hover { background: rgba(255, 255, 255, 0.1); }
+.btn-mark.present-btn.active { background: #10b981; color: white; border-color: #10b981; }
+.btn-mark.absent-btn.active { background: #ef4444; color: white; border-color: #ef4444; }
+.btn-mark.late-btn.active { background: #f59e0b; color: white; border-color: #f59e0b; }
+
+.submit-section {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submit-attendance-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    transition: transform 0.2s;
+}
+
+.submit-attendance-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+/* Student View Styles */
+.summary-card {
+    background: var(--card-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.circle-chart {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(#10b981 calc(var(--percentage) * 1%), rgba(255, 255, 255, 0.1) 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-inner {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+}
+
+.summary-details h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.summary-details p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.stats-row {
+    display: flex;
+    gap: 20px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.dot.present { background: #10b981; }
+.dot.absent { background: #ef4444; }
+.dot.late { background: #f59e0b; }
+
+.history-title {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.history-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-info h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.history-info span {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.history-status {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
