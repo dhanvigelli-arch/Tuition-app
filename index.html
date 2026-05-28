@@ -48,6 +48,15 @@
                     </div>
                 </div>
 
+                <div class="role-selector" style="margin-bottom: 20px; display: flex; gap: 15px; justify-content: center; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <label style="display:flex; align-items:center; gap:5px; cursor:pointer; color:var(--text-primary); font-size: 14px; font-weight: 500;">
+                        <input type="radio" name="role" value="student" checked style="accent-color:var(--primary-color); width: 16px; height: 16px;"> Student
+                    </label>
+                    <label style="display:flex; align-items:center; gap:5px; cursor:pointer; color:var(--text-primary); font-size: 14px; font-weight: 500;">
+                        <input type="radio" name="role" value="teacher" style="accent-color:var(--primary-color); width: 16px; height: 16px;"> Teacher
+                    </label>
+                </div>
+
                 <div class="form-actions">
                     <label class="remember-me">
                         <input type="checkbox" name="remember">
@@ -74,8 +83,10 @@
     <script>
         document.getElementById('login-form').addEventListener('submit', function(e) {
             e.preventDefault(); // Prevent actual form submission
-            window.location.href = 'dashboard.html'; // Redirect to dashboard
+            const role = document.querySelector('input[name="role"]:checked').value;
+            window.location.href = 'dashboard.html?role=' + role; // Redirect to dashboard
         });
     </script>
 </body>
 </html>
+
