@@ -143,14 +143,19 @@
                 document.getElementById('otp4')
             ];
 
-            let currentState = 'request_otp'; 
+            let currentState = 'request_otp';
+            let generatedOtp = '';
+
+            function generateOtp() {
+                return Math.floor(1000 + Math.random() * 9000).toString();
+            }
 
             function showToast(message) {
                 toast.textContent = message;
                 toast.classList.add('show');
                 setTimeout(() => {
                     toast.classList.remove('show');
-                }, 3000);
+                }, 4000);
             }
 
             mainBtn.addEventListener('click', () => {
@@ -166,10 +171,11 @@
                     mainBtn.textContent = "Verifying...";
                     
                     setTimeout(() => {
+                        generatedOtp = generateOtp();
                         otpSection.style.display = 'flex';
                         mainBtn.textContent = "Verify & Login";
                         currentState = 'verify_otp';
-                        showToast(OTP sent successfully to  + emailInput.value + !);
+                        showToast(OTP sent! (For testing, your code is:  + generatedOtp + ));
                         otpBoxes[0].focus();
                     }, 800);
                     
@@ -177,6 +183,13 @@
                     const enteredOtp = otpBoxes.map(box => box.value).join('');
                     if (enteredOtp.length < 4) {
                         alert("Please enter the full 4-digit OTP.");
+                        return;
+                    }
+                    
+                    if (enteredOtp !== generatedOtp) {
+                        alert("Invalid OTP! Please check the code and try again.");
+                        otpBoxes.forEach(box => box.value = '');
+                        otpBoxes[0].focus();
                         return;
                     }
 
@@ -190,7 +203,8 @@
             });
 
             resendLink.addEventListener('click', () => {
-                showToast(New OTP sent to  + emailInput.value + !);
+                generatedOtp = generateOtp();
+                showToast(New OTP sent! (For testing, your code is:  + generatedOtp + ));
                 otpBoxes.forEach(box => box.value = '');
                 otpBoxes[0].focus();
             });
@@ -212,3 +226,4 @@
     </script>
 </body>
 </html>
+
