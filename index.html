@@ -88,7 +88,7 @@
                     </svg>
                 </div>
                 <h2>Welcome Back</h2>
-                <p>Enter your email to securely log in.<br><span style="font-size:13px; color:var(--text-secondary); margin-top:5px; display:inline-block;">(Hint: use <strong>teacher@smartclass.com</strong> for Admin access)</span></p>
+                <p>Enter your email to securely log in.<br><span style="font-size:13px; color:var(--text-secondary); margin-top:5px; display:inline-block;">(Allowed emails: <strong>teacher@smartclass.com</strong> or <strong>student@smartclass.com</strong>)</span></p>
             </div>
 
             <form id="login-form">
@@ -135,6 +135,10 @@
 
             let currentState = 'request_otp';
             let generatedOtp = '';
+            
+            // Strict Whitelist
+            const allowedTeachers = ['teacher@smartclass.com'];
+            const allowedStudents = ['student@smartclass.com'];
 
             function generateOtp() {
                 return Math.floor(1000 + Math.random() * 9000).toString();
@@ -150,13 +154,21 @@
 
             mainBtn.addEventListener('click', () => {
                 if (currentState === 'request_otp') {
-                    if (!emailInput.value) {
+                    const email = emailInput.value.trim().toLowerCase();
+                    
+                    if (!email) {
                         alert("Please enter a valid email address first.");
                         return;
                     }
                     
-                    emailInput.disabled = true;
+                    // Enforce Strict Whitelist
+                    if (!allowedTeachers.includes(email) && !allowedStudents.includes(email)) {
+                        alert("Account not found. Please ensure you are using your registered email address.");
+                        emailInput.value = '';
+                        return;
+                    }
                     
+                    emailInput.disabled = true;
                     mainBtn.textContent = "Verifying...";
                     
                     setTimeout(() => {
@@ -186,7 +198,7 @@
                     
                     setTimeout(() => {
                         const email = emailInput.value.trim().toLowerCase();
-                        const determinedRole = (email === 'teacher@smartclass.com') ? 'teacher' : 'student';
+                        const determinedRole = allowedTeachers.includes(email) ? 'teacher' : 'student';
                         window.location.href = 'dashboard.html?role=' + determinedRole;
                     }, 1000);
                 }
@@ -216,3 +228,4 @@
     </script>
 </body>
 </html>
+
