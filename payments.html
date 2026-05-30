@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Class - Payments</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="payments.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+                <span>SmartClass</span>
+            </div>
+            <nav class="nav-links">
+                <a href="dashboard.html">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    Dashboard
+                </a>
+                <a href="materials.html">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    Materials
+                </a>
+                <a href="attendance.html">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    Attendance
+                </a>
+                <a href="payments.html" class="active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                    Payments
+                </a>
+            </nav>
+            <div class="user-profile">
+                <div class="avatar">U</div>
+                <div class="user-info">
+                    <h4>User Account</h4>
+                    <p>Loading Access...</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-title">
+                    <h1 id="payments-header-title">Fee Management</h1>
+                    <p id="payments-header-subtitle">Manage tuition fees and payments</p>
+                </div>
+                <div class="header-actions">
+                    <button class="logout-btn" onclick="window.location.href='index.html'">Logout</button>
+                </div>
+            </header>
+
+            <div id="teacher-payments-view" class="payments-view hidden">
+                <div class="financial-dashboard">
+                    <div class="finance-card revenue">
+                        <h3>Total Revenue</h3>
+                        <h2>$4,500</h2>
+                        <p>This Month</p>
+                    </div>
+                    <div class="finance-card pending">
+                        <h3>Pending Dues</h3>
+                        <h2>$850</h2>
+                        <p>3 Students</p>
+                    </div>
+                </div>
+
+                <div class="payments-table-container">
+                    <h3>Student Roster</h3>
+                    <table class="payments-table">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Reminders Sent</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Alice Smith</td>
+                                <td>$150</td>
+                                <td><span class="status-badge paid">Paid</span></td>
+                                <td>0</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Bob Jones</td>
+                                <td>$150</td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td><span class="reminder-count">2</span></td>
+                                <td><button class="send-reminder-btn">Send Reminder</button></td>
+                            </tr>
+                            <tr>
+                                <td>Charlie Davis</td>
+                                <td>$150</td>
+                                <td><span class="status-badge overdue">Overdue</span></td>
+                                <td><span class="reminder-count">3</span></td>
+                                <td><button class="send-reminder-btn">Send Reminder</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="student-payments-view" class="payments-view hidden">
+                <div class="student-due-section">
+                    <div class="reminder-banner">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        <div>
+                            <strong>Final Reminder (Notice 2/2)</strong>
+                            <p>Your tuition fee for this month is pending. Please pay to avoid late fees.</p>
+                        </div>
+                    </div>
+
+                    <div class="due-card">
+                        <div class="due-info">
+                            <h3>Current Due</h3>
+                            <h2>$150.00</h2>
+                            <p>Due Date: <strong>Oct 31, 2023</strong></p>
+                        </div>
+                        <div class="due-action">
+                            <button id="pay-now-btn" class="pay-btn">Pay Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="transaction-history">
+                    <h3>Payment History</h3>
+                    <div class="history-list">
+                        <div class="history-item">
+                            <div class="history-info">
+                                <h4>September Tuition</h4>
+                                <span>Paid on Sep 28, 2023</span>
+                            </div>
+                            <div class="history-amount paid">-$150.00</div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-info">
+                                <h4>August Tuition</h4>
+                                <span>Paid on Aug 29, 2023</span>
+                            </div>
+                            <div class="history-amount paid">-$150.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <div id="checkout-modal" class="modal-overlay hidden">
+        <div class="checkout-card">
+            <div class="checkout-header">
+                <h3>Secure Checkout</h3>
+                <button id="close-modal-btn" class="close-btn">&times;</button>
+            </div>
+            <div class="checkout-body">
+                <p class="checkout-amount">Total: <strong>$150.00</strong></p>
+                <div class="card-input-group">
+                    <label style="color:var(--text-secondary); font-size:12px;">Card Number</label>
+                    <input type="text" placeholder="1234 5678 9101 1121" class="glass-input">
+                </div>
+                <div class="card-input-row">
+                    <div class="card-input-group">
+                        <label style="color:var(--text-secondary); font-size:12px;">Expiry</label>
+                        <input type="text" placeholder="MM/YY" class="glass-input">
+                    </div>
+                    <div class="card-input-group">
+                        <label style="color:var(--text-secondary); font-size:12px;">CVC</label>
+                        <input type="text" placeholder="123" class="glass-input">
+                    </div>
+                </div>
+                <button id="confirm-payment-btn" class="confirm-btn">Confirm Payment</button>
+            </div>
+            <div class="checkout-success hidden" id="checkout-success">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <h2 style="color:#10b981; font-size:24px;">Payment Successful!</h2>
+                <p style="color:var(--text-secondary); margin-top:10px;">Thank you for your payment.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="payments.js"></script>
+</body>
+</html>

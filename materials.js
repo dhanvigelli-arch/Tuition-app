@@ -24,5 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if(materialsLink) materialsLink.href = 'materials.html?role=' + role;
     const attendanceLink = document.querySelector('.nav-links a:nth-child(4)');
     if(attendanceLink) attendanceLink.href = 'attendance.html?role=' + role;
+    const paymentsLink = document.querySelector('.nav-links a:nth-child(4)');
+    if(paymentsLink) paymentsLink.href = 'payments.html?role=' + role;
 });
+
 

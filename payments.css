@@ -1,0 +1,55 @@
+.payments-view { display: none; animation: fadeIn 0.4s ease-out; }
+.payments-view:not(.hidden) { display: flex; flex-direction: column; gap: 24px; }
+.financial-dashboard { display: flex; gap: 20px; }
+.finance-card { flex: 1; background: var(--card-glass); border: 1px solid var(--border-glass); border-radius: 20px; padding: 24px; text-align: center; }
+.finance-card h3 { color: var(--text-secondary); font-size: 16px; margin-bottom: 10px; }
+.finance-card h2 { font-size: 32px; margin-bottom: 5px; }
+.finance-card p { font-size: 13px; color: var(--text-secondary); }
+.finance-card.revenue h2 { color: #10b981; }
+.finance-card.pending h2 { color: #ef4444; }
+.payments-table-container { background: var(--card-glass); border: 1px solid var(--border-glass); border-radius: 20px; padding: 20px; }
+.payments-table-container h3 { margin-bottom: 16px; padding-left: 8px; }
+.payments-table { width: 100%; border-collapse: collapse; }
+.payments-table th, .payments-table td { padding: 16px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.payments-table th { background: rgba(0, 0, 0, 0.2); font-weight: 600; color: var(--text-secondary); font-size: 13px; text-transform: uppercase; }
+.status-badge { padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.status-badge.paid { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+.status-badge.pending { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+.status-badge.overdue { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+.reminder-count { background: rgba(255, 255, 255, 0.1); padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+.send-reminder-btn { background: rgba(99, 102, 241, 0.2); border: 1px solid rgba(99, 102, 241, 0.5); color: #818cf8; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; transition: all 0.2s; }
+.send-reminder-btn:hover { background: rgba(99, 102, 241, 0.4); }
+.send-reminder-btn.sent { background: rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.5); color: #10b981; }
+.student-due-section { display: flex; flex-direction: column; gap: 16px; }
+.reminder-banner { background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; color: #fca5a5; }
+.reminder-banner strong { color: #f87171; display: block; margin-bottom: 4px; font-size: 15px; }
+.reminder-banner p { font-size: 13px; color: #fecaca; margin: 0; }
+.due-card { background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(79, 70, 229, 0.05)); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 20px; padding: 30px; display: flex; justify-content: space-between; align-items: center; }
+.due-info h3 { font-size: 18px; color: var(--text-secondary); margin-bottom: 8px; }
+.due-info h2 { font-size: 36px; margin-bottom: 8px; color: white; }
+.due-info p { font-size: 14px; color: #a5b4fc; }
+.pay-btn { background: linear-gradient(135deg, #4f46e5, #4338ca); color: white; border: none; padding: 16px 32px; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4); transition: transform 0.2s; }
+.pay-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6); }
+.transaction-history { margin-top: 10px; }
+.transaction-history h3 { margin-bottom: 16px; }
+.history-item { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-glass); border-radius: 16px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.history-info h4 { font-size: 16px; margin-bottom: 4px; }
+.history-info span { font-size: 12px; color: var(--text-secondary); }
+.history-amount { font-weight: 700; }
+.history-amount.paid { color: #10b981; }
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 1000; animation: fadeIn 0.3s; }
+.modal-overlay.hidden { display: none; }
+.checkout-card { background: #1e1e2d; border: 1px solid var(--border-glass); border-radius: 20px; width: 400px; max-width: 90%; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+.checkout-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.close-btn { background: none; border: none; color: var(--text-secondary); font-size: 24px; cursor: pointer; }
+.close-btn:hover { color: white; }
+.checkout-amount { font-size: 18px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; }
+.checkout-amount strong { font-size: 24px; color: white; }
+.card-input-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.card-input-row { display: flex; gap: 16px; }
+.card-input-row .card-input-group { flex: 1; }
+.glass-input { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: white; font-size: 14px; outline: none; width: 100%; box-sizing: border-box; }
+.glass-input:focus { border-color: #4f46e5; }
+.confirm-btn { width: 100%; background: #10b981; color: white; border: none; padding: 14px; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: background 0.2s; }
+.confirm-btn:hover { background: #059669; }
+.checkout-success { text-align: center; padding: 20px 0; }

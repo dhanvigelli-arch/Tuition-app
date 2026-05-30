@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if(dashboardLink) dashboardLink.href = 'dashboard.html?role=' + role;
     if(materialsLink) materialsLink.href = 'materials.html?role=' + role;
     if(attendanceLink) attendanceLink.href = 'attendance.html?role=' + role;
+    const paymentsLink = document.querySelector('.nav-links a:nth-child(4)');
+    if(paymentsLink) paymentsLink.href = 'payments.html?role=' + role;
 
     // Teacher View Interactive Logic
     if (role === 'teacher') {
@@ -74,3 +76,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
