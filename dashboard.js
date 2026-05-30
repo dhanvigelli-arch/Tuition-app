@@ -158,7 +158,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const userInfoH4 = document.querySelector('.user-info h4');
     const userInfoP = document.querySelector('.user-info p');
-    if (role === 'teacher') {
+        if (role === 'teacher') {
+        const statsContainer = document.getElementById('teacher-stats-container');
+        if(statsContainer) {
+            statsContainer.style.display = 'flex';
+            statsContainer.classList.remove('hidden');
+        }
         if(userInfoH4) userInfoH4.textContent = 'Teacher Account';
         if(userInfoP) userInfoP.textContent = 'Admin Access';
     } else {
@@ -180,5 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if(attendanceLink) attendanceLink.href = 'attendance.html?role=' + role;
     const paymentsLink = document.querySelector('.nav-links a:nth-child(4)');
     if(paymentsLink) paymentsLink.href = 'payments.html?role=' + role;
+
 
 
