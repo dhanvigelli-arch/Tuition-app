@@ -88,25 +88,16 @@
                     </svg>
                 </div>
                 <h2>Welcome Back</h2>
-                <p>Enter your email to connect and access your live Zoom/Google Meet classes.</p>
+                <p>Enter your email to securely log in.<br><span style="font-size:13px; color:var(--text-secondary); margin-top:5px; display:inline-block;">(Hint: use <strong>teacher@smartclass.com</strong> for Admin access)</span></p>
             </div>
 
             <form id="login-form">
-                <div class="input-group">
+                <div class="input-group" style="margin-bottom: 24px;">
                     <label for="email">Email Address</label>
                     <div class="input-wrapper">
                         <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                         <input type="email" id="email" name="email" placeholder="Enter your email address" required>
                     </div>
-                </div>
-
-                <div class="role-selector" style="margin-bottom: 20px; display: flex; gap: 15px; justify-content: center; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-                    <label style="display:flex; align-items:center; gap:5px; cursor:pointer; color:var(--text-primary); font-size: 14px; font-weight: 500;">
-                        <input type="radio" name="role" value="student" checked style="accent-color:var(--primary-color); width: 16px; height: 16px;"> Student
-                    </label>
-                    <label style="display:flex; align-items:center; gap:5px; cursor:pointer; color:var(--text-primary); font-size: 14px; font-weight: 500;">
-                        <input type="radio" name="role" value="teacher" style="accent-color:var(--primary-color); width: 16px; height: 16px;"> Teacher
-                    </label>
                 </div>
 
                 <div class="otp-section" id="otp-section">
@@ -132,7 +123,6 @@
             const emailInput = document.getElementById('email');
             const mainBtn = document.getElementById('main-btn');
             const otpSection = document.getElementById('otp-section');
-            const roleRadios = document.querySelectorAll('input[name="role"]');
             const toast = document.getElementById('toast');
             const resendLink = document.getElementById('resend-link');
             
@@ -166,7 +156,6 @@
                     }
                     
                     emailInput.disabled = true;
-                    Array.from(roleRadios).forEach(r => r.disabled = true);
                     
                     mainBtn.textContent = "Verifying...";
                     
@@ -196,8 +185,9 @@
                     mainBtn.textContent = "Authenticating...";
                     
                     setTimeout(() => {
-                        const selectedRole = document.querySelector('input[name="role"]:checked').value;
-                        window.location.href = 'dashboard.html?role=' + selectedRole;
+                        const email = emailInput.value.trim().toLowerCase();
+                        const determinedRole = (email === 'teacher@smartclass.com') ? 'teacher' : 'student';
+                        window.location.href = 'dashboard.html?role=' + determinedRole;
                     }, 1000);
                 }
             });
@@ -226,4 +216,3 @@
     </script>
 </body>
 </html>
-
