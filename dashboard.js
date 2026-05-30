@@ -173,6 +173,41 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hide all edit buttons
         const editBtns = document.querySelectorAll('.edit-btn');
         editBtns.forEach(btn => btn.style.display = 'none');
+
+        // Paywall Logic
+        const feePaid = localStorage.getItem('feePaid') === 'true';
+        const cardFooters = document.querySelectorAll('.card-footer');
+        
+        cardFooters.forEach(footer => {
+            const existingBtn = footer.querySelector('.join-btn');
+            if (existingBtn) existingBtn.remove();
+            
+            const btn = document.createElement('button');
+            btn.className = 'join-btn';
+            btn.style.width = '100%';
+            btn.style.padding = '12px';
+            btn.style.borderRadius = '12px';
+            btn.style.cursor = 'pointer';
+            btn.style.fontWeight = '600';
+            btn.style.marginTop = '10px';
+            
+            if (!feePaid) {
+                btn.innerHTML = '?? Pay to Unlock';
+                btn.style.background = 'rgba(239, 68, 68, 0.2)';
+                btn.style.color = '#ef4444';
+                btn.style.border = '1px solid rgba(239, 68, 68, 0.5)';
+                btn.onclick = () => window.location.href = 'payments.html?role=student';
+            } else {
+                btn.innerHTML = 'Join Class';
+                btn.style.background = 'linear-gradient(135deg, #4f46e5, #4338ca)';
+                btn.style.color = 'white';
+                btn.style.border = 'none';
+                btn.style.boxShadow = '0 4px 12px rgba(79, 70, 229, 0.3)';
+                btn.onclick = () => window.open('https://zoom.us', '_blank');
+            }
+            
+            footer.insertBefore(btn, footer.firstChild);
+        });
     }
 
     // Update Sidebar Links
@@ -185,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(attendanceLink) attendanceLink.href = 'attendance.html?role=' + role;
     const paymentsLink = document.querySelector('.nav-links a:nth-child(4)');
     if(paymentsLink) paymentsLink.href = 'payments.html?role=' + role;
+
 
 
 

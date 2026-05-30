@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             confirmBtn.addEventListener('click', () => {
                 checkoutBody.classList.add('hidden');
                 checkoutSuccess.classList.remove('hidden');
+                localStorage.setItem('feePaid', 'true');
                 
                 setTimeout(() => {
                     const banner = document.querySelector('.reminder-banner');
@@ -127,4 +128,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
 
