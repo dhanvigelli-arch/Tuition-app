@@ -210,17 +210,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Update Sidebar Links
-    const dashboardLink = document.querySelector('.nav-links a:nth-child(1)');
-    const materialsLink = document.querySelector('.nav-links a:nth-child(3)');
-    
-    if(dashboardLink) dashboardLink.href = 'dashboard.html?role=' + role;
-    if(materialsLink) materialsLink.href = 'materials.html?role=' + role;
-    const attendanceLink = document.querySelector('.nav-links a:nth-child(4)');
-    if(attendanceLink) attendanceLink.href = 'attendance.html?role=' + role;
-    const paymentsLink = document.querySelector('.nav-links a:nth-child(4)');
-    if(paymentsLink) paymentsLink.href = 'payments.html?role=' + role;
-
-
-
-
+        // Update all nav links dynamically based on role
+    const allNavLinks = document.querySelectorAll('.nav-links a');
+    allNavLinks.forEach(link => {
+        if(link.textContent.includes('Dashboard')) link.href = 'dashboard.html?role=' + role;
+        if(link.textContent.includes('Materials') || link.textContent.includes('Students')) link.href = 'materials.html?role=' + role;
+        if(link.textContent.includes('Attendance')) link.href = 'attendance.html?role=' + role;
+        if(link.textContent.includes('Progress')) link.href = 'progress.html?role=' + role;
+        if(link.textContent.includes('Payments')) link.href = 'payments.html?role=' + role;
+    });
