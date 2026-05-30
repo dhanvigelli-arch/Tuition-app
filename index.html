@@ -3,16 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Class Login</title>
+    <title>Smart Class - Login</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .otp-section {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            animation: fadeIn 0.4s ease-out;
+            margin-bottom: 20px;
+        }
+        .otp-inputs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .otp-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.3);
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .otp-box:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+        }
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            transform: translateY(-100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+        }
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .resend-text {
+            color: var(--text-secondary);
+            font-size: 13px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        .resend-link {
+            color: var(--primary-color);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+    <div id="toast" class="toast">OTP sent successfully to your email!</div>
+
     <div class="login-container">
         <div class="glass-panel">
             <div class="login-header">
                 <div class="logo">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#4f46e5" />
+                                <stop offset="100%" stop-color="#4338ca" />
+                            </linearGradient>
+                        </defs>
                         <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
                         <path d="M2 17l10 5 10-5"></path>
                         <path d="M2 12l10 5 10-5"></path>
@@ -21,30 +90,13 @@
                 <h2>Welcome Back</h2>
                 <p>Enter your email to connect and access your live Zoom/Google Meet classes.</p>
             </div>
-            
+
             <form id="login-form">
                 <div class="input-group">
-                    <label for="phone">Email Address</label>
+                    <label for="email">Email Address</label>
                     <div class="input-wrapper">
-                        <span class="icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                            </svg>
-                        </span>
-                        <input type="email" id="email" name="email" placeholder="Enter your Email Address" required>
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <div class="input-wrapper">
-                        <span class="icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                            </svg>
-                        </span>
-                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
                     </div>
                 </div>
 
@@ -57,36 +109,106 @@
                     </label>
                 </div>
 
-                <div class="form-actions">
-                    <label class="remember-me">
-                        <input type="checkbox" name="remember">
-                        <span>Remember me</span>
-                    </label>
-                    <a href="#" class="forgot-password">Forgot password?</a>
+                <div class="otp-section" id="otp-section">
+                    <label style="text-align: center;">Enter 4-digit OTP</label>
+                    <div class="otp-inputs">
+                        <input type="text" maxlength="1" class="otp-box" id="otp1">
+                        <input type="text" maxlength="1" class="otp-box" id="otp2">
+                        <input type="text" maxlength="1" class="otp-box" id="otp3">
+                        <input type="text" maxlength="1" class="otp-box" id="otp4">
+                    </div>
+                    <p class="resend-text">Didn't receive code? <span class="resend-link" id="resend-link">Resend</span></p>
                 </div>
 
-                <button type="submit" class="submit-btn">
-                    Sign In
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </button>
+                <div class="form-actions">
+                    <button type="button" class="login-btn" id="main-btn">Send OTP</button>
+                </div>
             </form>
-            
-            <div class="login-footer">
-                <p>Don't have an account? <a href="#">Sign up here</a></p>
-            </div>
         </div>
     </div>
 
     <script>
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent actual form submission
-            const role = document.querySelector('input[name="role"]:checked').value;
-            window.location.href = 'dashboard.html?role=' + role; // Redirect to dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            const emailInput = document.getElementById('email');
+            const mainBtn = document.getElementById('main-btn');
+            const otpSection = document.getElementById('otp-section');
+            const roleRadios = document.querySelectorAll('input[name="role"]');
+            const toast = document.getElementById('toast');
+            const resendLink = document.getElementById('resend-link');
+            
+            const otpBoxes = [
+                document.getElementById('otp1'),
+                document.getElementById('otp2'),
+                document.getElementById('otp3'),
+                document.getElementById('otp4')
+            ];
+
+            let currentState = 'request_otp'; 
+
+            function showToast(message) {
+                toast.textContent = message;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+
+            mainBtn.addEventListener('click', () => {
+                if (currentState === 'request_otp') {
+                    if (!emailInput.value) {
+                        alert("Please enter a valid email address first.");
+                        return;
+                    }
+                    
+                    emailInput.disabled = true;
+                    Array.from(roleRadios).forEach(r => r.disabled = true);
+                    
+                    mainBtn.textContent = "Verifying...";
+                    
+                    setTimeout(() => {
+                        otpSection.style.display = 'flex';
+                        mainBtn.textContent = "Verify & Login";
+                        currentState = 'verify_otp';
+                        showToast(OTP sent successfully to  + emailInput.value + !);
+                        otpBoxes[0].focus();
+                    }, 800);
+                    
+                } else if (currentState === 'verify_otp') {
+                    const enteredOtp = otpBoxes.map(box => box.value).join('');
+                    if (enteredOtp.length < 4) {
+                        alert("Please enter the full 4-digit OTP.");
+                        return;
+                    }
+
+                    mainBtn.textContent = "Authenticating...";
+                    
+                    setTimeout(() => {
+                        const selectedRole = document.querySelector('input[name="role"]:checked').value;
+                        window.location.href = 'dashboard.html?role=' + selectedRole;
+                    }, 1000);
+                }
+            });
+
+            resendLink.addEventListener('click', () => {
+                showToast(New OTP sent to  + emailInput.value + !);
+                otpBoxes.forEach(box => box.value = '');
+                otpBoxes[0].focus();
+            });
+
+            otpBoxes.forEach((box, index) => {
+                box.addEventListener('input', (e) => {
+                    if (e.target.value && index < 3) {
+                        otpBoxes[index + 1].focus();
+                    }
+                });
+                
+                box.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                        otpBoxes[index - 1].focus();
+                    }
+                });
+            });
         });
     </script>
 </body>
 </html>
-
