@@ -69,7 +69,7 @@
     </style>
 </head>
 <body>
-    <div id="toast" class="toast">OTP sent successfully to your email!</div>
+    <div id="toast" class="toast">OTP sent successfully to your WhatsApp!</div>
 
     <div class="login-container">
         <div class="glass-panel">
@@ -135,6 +135,7 @@
 
             let currentState = 'request_otp';
             let generatedOtp = '';
+            let resendTimerInterval = null;
             
             // Strict Whitelist
             const allowedTeachers = ['teacher@smartclass.com'];
@@ -150,6 +151,28 @@
                 setTimeout(() => {
                     toast.classList.remove('show');
                 }, 4000);
+            }
+
+            function startResendTimer() {
+                let timeLeft = 45;
+                resendLink.style.pointerEvents = 'none';
+                resendLink.style.color = 'var(--text-secondary)';
+                resendLink.style.textDecoration = 'none';
+                resendLink.textContent = Resend in  + timeLeft + s;
+
+                clearInterval(resendTimerInterval);
+                resendTimerInterval = setInterval(() => {
+                    timeLeft--;
+                    resendLink.textContent = Resend in  + timeLeft + s;
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(resendTimerInterval);
+                        resendLink.style.pointerEvents = 'auto';
+                        resendLink.style.color = '#4f46e5';
+                        resendLink.style.textDecoration = 'underline';
+                        resendLink.textContent = 'Resend OTP';
+                    }
+                }, 1000);
             }
 
             mainBtn.addEventListener('click', () => {
@@ -176,7 +199,8 @@
                         otpSection.style.display = 'flex';
                         mainBtn.textContent = "Verify & Login";
                         currentState = 'verify_otp';
-                        showToast(OTP sent! (For testing, your code is:  + generatedOtp + ));
+                        showToast(OTP sent to WhatsApp! (For testing, your code is:  + generatedOtp + ));
+                        startResendTimer();
                         otpBoxes[0].focus();
                     }, 800);
                     
@@ -206,7 +230,8 @@
 
             resendLink.addEventListener('click', () => {
                 generatedOtp = generateOtp();
-                showToast(New OTP sent! (For testing, your code is:  + generatedOtp + ));
+                showToast(New OTP sent to WhatsApp! (For testing, your code is:  + generatedOtp + ));
+                startResendTimer();
                 otpBoxes.forEach(box => box.value = '');
                 otpBoxes[0].focus();
             });
@@ -228,4 +253,5 @@
     </script>
 </body>
 </html>
+
 
