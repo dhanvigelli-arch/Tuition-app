@@ -164,20 +164,42 @@
             </div>
             <div class="checkout-body">
                 <p class="checkout-amount">Total: <strong>$150.00</strong></p>
-                <div class="card-input-group">
-                    <label style="color:var(--text-secondary); font-size:12px;">Card Number</label>
-                    <input type="text" placeholder="1234 5678 9101 1121" class="glass-input">
+                
+                <div class="payment-method-selector" style="display:flex; gap:10px; margin-bottom: 20px;">
+                    <button id="method-card-btn" style="flex:1; padding:10px; border-radius:8px; background:#4f46e5; color:white; border:none; cursor:pointer; font-weight:600;">Card</button>
+                    <button id="method-upi-btn" style="flex:1; padding:10px; border-radius:8px; background:rgba(0,0,0,0.3); color:var(--text-secondary); border:1px solid rgba(255,255,255,0.1); cursor:pointer; font-weight:600;">UPI / PhonePe</button>
                 </div>
-                <div class="card-input-row">
+
+                <div id="form-card" style="display:block;">
                     <div class="card-input-group">
-                        <label style="color:var(--text-secondary); font-size:12px;">Expiry</label>
-                        <input type="text" placeholder="MM/YY" class="glass-input">
+                        <label style="color:var(--text-secondary); font-size:12px;">Card Number</label>
+                        <input type="text" placeholder="1234 5678 9101 1121" class="glass-input">
                     </div>
-                    <div class="card-input-group">
-                        <label style="color:var(--text-secondary); font-size:12px;">CVC</label>
-                        <input type="text" placeholder="123" class="glass-input">
+                    <div class="card-input-row">
+                        <div class="card-input-group">
+                            <label style="color:var(--text-secondary); font-size:12px;">Expiry</label>
+                            <input type="text" placeholder="MM/YY" class="glass-input">
+                        </div>
+                        <div class="card-input-group">
+                            <label style="color:var(--text-secondary); font-size:12px;">CVC</label>
+                            <input type="text" placeholder="123" class="glass-input">
+                        </div>
                     </div>
                 </div>
+
+                <div id="form-upi" style="display:none;">
+                    <div class="card-input-group">
+                        <label style="color:var(--text-secondary); font-size:12px;">Enter UPI ID</label>
+                        <input type="text" placeholder="username@ybl or 9876543210@ibl" class="glass-input">
+                    </div>
+                    <div style="text-align: center; margin-top: 15px; color: var(--text-secondary); font-size: 13px;">
+                        <p>Or scan to pay</p>
+                        <div style="width: 120px; height: 120px; background: white; border-radius: 10px; margin: 10px auto; display: flex; align-items: center; justify-content: center;">
+                            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="6" y="6" width="1" height="1"></rect><rect x="17" y="6" width="1" height="1"></rect><rect x="17" y="17" width="1" height="1"></rect><rect x="6" y="17" width="1" height="1"></rect></svg>
+                        </div>
+                    </div>
+                </div>
+
                 <button id="confirm-payment-btn" class="confirm-btn">Confirm Payment</button>
             </div>
             <div class="checkout-success hidden" id="checkout-success">
@@ -191,3 +213,4 @@
     <script src="payments.js"></script>
 </body>
 </html>
+

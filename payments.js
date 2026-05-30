@@ -55,6 +55,39 @@ document.addEventListener('DOMContentLoaded', () => {
         const checkoutBody = document.querySelector('.checkout-body');
         const checkoutSuccess = document.getElementById('checkout-success');
 
+                const methodCardBtn = document.getElementById('method-card-btn');
+        const methodUpiBtn = document.getElementById('method-upi-btn');
+        const formCard = document.getElementById('form-card');
+        const formUpi = document.getElementById('form-upi');
+
+        if(methodCardBtn && methodUpiBtn) {
+            methodCardBtn.addEventListener('click', () => {
+                methodCardBtn.style.background = '#4f46e5';
+                methodCardBtn.style.color = 'white';
+                methodCardBtn.style.border = 'none';
+                
+                methodUpiBtn.style.background = 'rgba(0,0,0,0.3)';
+                methodUpiBtn.style.color = 'var(--text-secondary)';
+                methodUpiBtn.style.border = '1px solid rgba(255,255,255,0.1)';
+                
+                formCard.style.display = 'block';
+                formUpi.style.display = 'none';
+            });
+            
+            methodUpiBtn.addEventListener('click', () => {
+                methodUpiBtn.style.background = '#4f46e5';
+                methodUpiBtn.style.color = 'white';
+                methodUpiBtn.style.border = 'none';
+                
+                methodCardBtn.style.background = 'rgba(0,0,0,0.3)';
+                methodCardBtn.style.color = 'var(--text-secondary)';
+                methodCardBtn.style.border = '1px solid rgba(255,255,255,0.1)';
+                
+                formUpi.style.display = 'block';
+                formCard.style.display = 'none';
+            });
+        }
+
         if(payBtn) {
             payBtn.addEventListener('click', () => {
                 modal.classList.remove('hidden');
@@ -94,3 +127,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
